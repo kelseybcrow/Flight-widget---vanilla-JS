@@ -1,5 +1,6 @@
 const tableBody = document.getElementById('table-body')
 
+// this array of objects is dummy data
 let flights = [
   {
     time: '08:11',
@@ -38,22 +39,31 @@ let flights = [
   },
 ]
 
+// these are more dummy data
 const destinations = ['TOKYO', 'FRANKFURT', 'DUBAI', 'LONDON', 'OMAN', 'BEIRUT']
-
 const remarks = ['ON TIME', 'DELAYED', 'CANCELLED']
 let hour = 15
 
 const populateTable = () => {
+  // for of loop to iterate through the array of flights
   for (const flight of flights) {
+    // for each flight, create a table row and table icon in the DOM
     const tableRow = document.createElement('tr')
     const tableIcon = document.createElement('td')
+    // set the text content to the airplane icon
     tableIcon.textContent = '✈'
+    // append the table icon to the table row because we can't just create stuff, we have to then append it
     tableRow.append(tableIcon)
 
+    // for in loop to iterate through the key/value pairs in each flight object
     for (const flightDetail in flight) {
+      // for each key/value pair in each flight object, create a table cell for it
+      // also create a variable for the array version of the flight details (an array-like object)
       const tableCell = document.createElement('td')
       const word = Array.from(flight[flightDetail])
 
+      // for of loop for the new array version of the flight details that we just created in the last line of code?
+      // destructuring the index and letter properties from the object that is word? (.entries() returns an array of the key/value pairs)
       for (const [index, letter] of word.entries()) {
         const letterElement = document.createElement('div')
         setTimeout(() => {
@@ -70,10 +80,14 @@ const populateTable = () => {
 
 populateTable()
 
+// more dummy data
+
 function generateRandomLetter() {
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   return alphabet.charAt(Math.floor(Math.random() * alphabet.length))
 }
+
+// more dummy data
 
 function generateRandomNumber(maxNumber) {
   const numbers = '0123456789'
@@ -84,6 +98,8 @@ function generateRandomNumber(maxNumber) {
     return numbers.charAt(Math.floor(Math.random() * numbers.length))
   }
 }
+
+// more dummy data
 
 function generateTime() {
   let displayHour = hour
